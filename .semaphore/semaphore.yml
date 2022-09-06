@@ -33,6 +33,7 @@ blocks:
           - sudo pip install pipenv
           - checkout
           - 'cache restore cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master'
+          - pipenv shell
       jobs:
         - name: Unit tests
           commands:
