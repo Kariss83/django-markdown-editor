@@ -33,18 +33,17 @@ blocks:
           - sudo pip install pipenv
           - checkout
           - 'cache restore cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master'
-          - pipenv shell
       jobs:
         - name: Unit tests
           commands:
             - cd martor_demo
-            - python manage.py makemigrations
-            - python manage.py migrate
-            - python manage.py test
+            - pipenv run python manage.py makemigrations
+            - pipenv run python manage.py migrate
+            - pipenv run python manage.py test
         - name: Checklist
           commands:
             - cd martor_demo
-            - python manage.py check --deploy
+            - pipenv run python manage.py check --deploy
         - name: Style check
           commands:
             - pip install flake8
