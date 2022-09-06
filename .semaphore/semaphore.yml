@@ -10,7 +10,7 @@ blocks:
       jobs:
         - name: Install and cache dependencies
           commands:
-            - sem-version python 3.9.12
+            - sem-version python 3.9
             - checkout
             - 'cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master'
             - pipenv install --dev --deploy
